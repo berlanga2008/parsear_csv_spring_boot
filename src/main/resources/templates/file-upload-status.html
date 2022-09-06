@@ -1,0 +1,32 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h1>File Upload Status</h1>
+            <!--display error if any-->
+            <div class="alert alert-danger" role="alert" th:if="${!status}">
+                <strong>Error:</strong>
+                <span th:text="${message}"></span>
+            </div>
+
+            <!--display users list-->
+            <table class="table table-striped" th:if="${status}">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">codigo</th>
+                    <th scope="col">descripcion</th>
+                    <th scope="col">formato</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="producto, i : ${productos}">
+                    <th scope="row" th:text="${i.index + 1}"></th>
+                    <td th:text="${producto.codigo}"></td>
+                    <td th:text="${producto.descripcion}"></td>
+                    <td th:text="${producto.formato}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
